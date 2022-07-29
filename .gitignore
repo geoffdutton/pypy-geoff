@@ -1,3 +1,5 @@
 dist
 **/__pycache__
 .venv
+changelog.d/*
+!changelog.d/.gitkeep

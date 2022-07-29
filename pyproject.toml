@@ -3,6 +3,7 @@ name = "pypy-geoff"
 version = "0.1.0"
 description = ""
 authors = ["Geoff Dutton <g.dutton@gmail.com>"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
