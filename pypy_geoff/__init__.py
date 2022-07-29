@@ -8,13 +8,16 @@ import json
 
 
 class ExtendedEncoder(json.JSONEncoder):
-    """JSON encoder defining the mechanism to encode arbitrary Python objects.
-    To encode an arbitrary object, you should subclass this encoder and define one
-    encode_X method for each type of object you want to be able to encode.
-    The method name should start with "encode_" and end with the type name.
+    """JSON encoder defining the mechanism to encode arbitrary
+    Python objects.
+    To encode an arbitrary object, you should subclass this encoder
+    and define one encode_X method for each type of object you want
+    to be able to encode. The method name should start with "encode_"
+    and end with the type name.
     The method accepts the given type of Python object and
     should return a JSON-serialisable dictionary with the appropriate data,
-    which typically amounts to the data necessary to rebuild the object later on.
+    which typically amounts to the data necessary to rebuild
+    the object later on.
     A related decoder must be implemented if decoding from JSON is required.
     """
 
@@ -36,8 +39,9 @@ class ExtendedDecoder(json.JSONDecoder):
     you should subclass this decoder and define one decode_X method for
     each type of object you want to be able to decode.
     The method name should start with "decode_" and end with the type name.
-    The method accepts a Python dictionary with string keys and should be able
-    to reconstruct the arbitrary object from the data provided in the dictionary.
+    The method accepts a Python dictionary with string keys and should
+    be able to reconstruct the arbitrary object from the data
+    provided in the dictionary.
     """
 
     def __init__(self, **kwargs):
@@ -56,8 +60,11 @@ class ExtendedDecoder(json.JSONDecoder):
             return decoder(obj)
 
 
-def dump(obj, fp, cls=json.JSONEncoder, **kwargs):  # pylint: disable=invalid-name
-    """Thin wrapper around `json.dump` with customisable default encoder."""
+def dump(
+    obj, fp, cls=json.JSONEncoder, **kwargs
+):  # pylint: disable=invalid-name,line-too-long
+    """Thin wrapper around `json.dump` with
+    customisable default encoder."""
     return json.dump(obj, fp, cls=cls, **kwargs)
 
 
@@ -78,9 +85,11 @@ def loads(s, cls=json.JSONDecoder, **kwargs):  # pylint: disable=invalid-name
 
 def register_encoder(encoder_cls):
     """Decorator to register a new extended JSON encoder.
-    This decorator sets the decorated class as the default encoder used by the
-    functions `dump` and `dumps` provided in this module.
-    The decorated class is not modified and should be a subclass of ExtendedEncoder.
+    This decorator sets the decorated class as the default encoder
+    used by the functions `dump` and `dumps` provided
+    in this module.
+    The decorated class is not modified and should be a
+    subclass of ExtendedEncoder.
     """
     dump.__defaults__ = (encoder_cls,)
     dumps.__defaults__ = (encoder_cls,)
@@ -89,9 +98,11 @@ def register_encoder(encoder_cls):
 
 def register_decoder(decoder_cls):
     """Decorator to register a new extended JSON decoder.
-    This decorator sets the decorated class as the default decoder used by the
-    functions `load` and `loads` provided in this module.
-    The decorated class is not modified and should be a subclass of ExtendedDecoder.
+    This decorator sets the decorated class as the default decoder
+    used by the functions `load` and `loads` provided
+    in this module.
+    The decorated class is not modified and should be a
+    subclass of ExtendedDecoder.
     """
     load.__defaults__ = (decoder_cls,)
     loads.__defaults__ = (decoder_cls,)

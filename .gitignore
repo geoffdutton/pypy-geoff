@@ -3,3 +3,5 @@ dist
 .venv
 changelog.d/*
 !changelog.d/.gitkeep
+.pytest_cache
+.tox
