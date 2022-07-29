@@ -5,3 +5,6 @@ changelog.d/*
 !changelog.d/.gitkeep
 .pytest_cache
 .tox
+.coverage
+coverage.xml
+htmlcov
