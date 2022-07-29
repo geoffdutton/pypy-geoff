@@ -1,6 +1,12 @@
 
 # 2022-07-29
 
+## Added
+
+- PyPy publish github actions workflow
+
+# 2022-07-29
+
 ## Changed
 
 - Changed scriv to use markdown
