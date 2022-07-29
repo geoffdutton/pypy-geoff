@@ -1,9 +1,11 @@
 
 # 2022-07-29
 
+## Changed
 
-2022-07-29
-==========
+- Changed scriv to use markdown
+
+# 2022-07-29
 
 ### Added
 
